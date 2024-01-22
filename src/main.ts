@@ -1,6 +1,6 @@
-import './style.css';
+import "./style.css";
 
-type Especialidad = 'Medico de familia' | 'Pediatra' | 'Cardiólogo';
+type Especialidad = "Medico de familia" | "Pediatra" | "Cardiólogo";
 
 interface Pacientes {
   id: number;
@@ -16,62 +16,62 @@ interface Pacientes {
 const pacientes: Pacientes[] = [
   {
     id: 1,
-    nombre: 'John',
-    apellidos: 'Doe',
-    sexo: 'Male',
+    nombre: "John",
+    apellidos: "Doe",
+    sexo: "Male",
     temperatura: 36.8,
     frecuenciaCardiaca: 80,
-    especialidad: 'Medico de familia',
+    especialidad: "Medico de familia",
     edad: 44,
   },
   {
     id: 2,
-    nombre: 'Jane',
-    apellidos: 'Doe',
-    sexo: 'Female',
+    nombre: "Jane",
+    apellidos: "Doe",
+    sexo: "Female",
     temperatura: 36.8,
     frecuenciaCardiaca: 70,
-    especialidad: 'Medico de familia',
+    especialidad: "Medico de familia",
     edad: 43,
   },
   {
     id: 3,
-    nombre: 'Junior',
-    apellidos: 'Doe',
-    sexo: 'Male',
+    nombre: "Junior",
+    apellidos: "Doe",
+    sexo: "Male",
     temperatura: 36.8,
     frecuenciaCardiaca: 90,
-    especialidad: 'Pediatra',
+    especialidad: "Pediatra",
     edad: 8,
   },
   {
     id: 4,
-    nombre: 'Mary',
-    apellidos: 'Wien',
-    sexo: 'Female',
+    nombre: "Mary",
+    apellidos: "Wien",
+    sexo: "Female",
     temperatura: 36.8,
     frecuenciaCardiaca: 120,
-    especialidad: 'Medico de familia',
+    especialidad: "Medico de familia",
     edad: 20,
   },
   {
     id: 5,
-    nombre: 'Scarlett',
-    apellidos: 'Somez',
-    sexo: 'Female',
+    nombre: "Scarlett",
+    apellidos: "Somez",
+    sexo: "Female",
     temperatura: 36.8,
     frecuenciaCardiaca: 110,
-    especialidad: 'Cardiólogo',
+    especialidad: "Cardiólogo",
     edad: 30,
   },
   {
     id: 6,
-    nombre: 'Brian',
-    apellidos: 'Kid',
-    sexo: 'Male',
+    nombre: "Brian",
+    apellidos: "Kid",
+    sexo: "Male",
     temperatura: 39.8,
     frecuenciaCardiaca: 80,
-    especialidad: 'Pediatra',
+    especialidad: "Pediatra",
     edad: 11,
   },
 ];
@@ -82,11 +82,15 @@ const obtenPacientesAsignadosAPediatria = (
   pacientes: Pacientes[]
 ): Pacientes[] => {
   const pacientesPediatria: Pacientes[] = [];
+  let index = 0;
+
   for (let i = 0; i < pacientes.length; i++) {
-    if (pacientes[i].especialidad === 'Pediatra') {
-      pacientesPediatria.push(pacientes[i]);
+    if (pacientes[i].especialidad === "Pediatra") {
+      pacientesPediatria[index] = { ...pacientes[i] };
+      index++;
     }
   }
+
   return pacientesPediatria;
 };
 
@@ -100,7 +104,7 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
   const pacientesPediatriaMenores10: Pacientes[] = [];
   for (let i = 0; i < pacientes.length; i++) {
     if (pacientes[i].edad < 10) {
-      pacientesPediatriaMenores10.push(pacientes[i]);
+      pacientesPediatriaMenores10[i] = { ...pacientesPediatria[i] };
     }
   }
   return pacientesPediatriaMenores10;
@@ -138,8 +142,8 @@ const reasignaPacientesAMedicoFamilia = (
   pacientes: Pacientes[]
 ): Pacientes[] => {
   for (let i = 0; i < pacientes.length; i++) {
-    if (pacientes[i].especialidad === 'Pediatra') {
-      pacientes[i].especialidad = 'Medico de familia';
+    if (pacientes[i].especialidad === "Pediatra") {
+      pacientes[i].especialidad = "Medico de familia";
     }
   }
   return pacientes;
@@ -152,7 +156,7 @@ console.log(reasignaPacientesAMedicoFamilia(pacientes));
 
 const hayPacientesDePediatria = (pacientes: Pacientes[]): boolean => {
   for (let i = 0; i < pacientes.length; i++) {
-    if (pacientes[i].especialidad === 'Pediatra') {
+    if (pacientes[i].especialidad === "Pediatra") {
       return true;
     }
   }
@@ -179,13 +183,13 @@ const cuentaPacientesPorEspecialidad = (
 
   for (let i = 0; i < pacientes.length; i++) {
     switch (pacientes[i].especialidad) {
-      case 'Medico de familia':
+      case "Medico de familia":
         contadorMedicoFamilia++;
         break;
-      case 'Pediatra':
+      case "Pediatra":
         contadorPediatria++;
         break;
-      case 'Cardiólogo':
+      case "Cardiólogo":
         contadorCardiologia++;
         break;
     }
