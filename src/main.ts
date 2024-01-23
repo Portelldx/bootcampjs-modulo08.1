@@ -117,16 +117,13 @@ console.log(pacientesPediatriaMenores10);
 // Apartado 2
 // Queremos activar el protocolo de urgencia si cualquier de los pacientes tiene un ritmo cardíaco superior a 100 pulsaciones por minuto y una temperatura corporal superior a 39 grados.
 
-const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
-  let activarProctolo: boolean = false;
-  let i: number = 0;
+const activarProtocoloUrgencia = (pacientes) => {
+  let activarProctolo = false;
+  let i = 0;
 
-  while (i < pacientes.length) {
-    if (
-      pacientes[i].temperatura > 39 &&
-      pacientes[i].frecuenciaCardiaca > 100
-    ) {
-      return true;
+  while (i < pacientes.length && !activarProctolo) {
+    if (pacientes[i].temperatura > 39 && pacientes[i].frecuenciaCardiaca > 100) {
+      activarProctolo = true;
     }
     i++;
   }
