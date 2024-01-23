@@ -102,17 +102,15 @@ const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
   pacientes: Pacientes[]
 ): Pacientes[] => {
   const pacientesPediatriaMenores10: Pacientes[] = [];
+  let index = 0;
   for (let i = 0; i < pacientes.length; i++) {
-    if (pacientes[i].edad < 10) {
-      pacientesPediatriaMenores10[i] = { ...pacientesPediatria[i] };
+    if (pacientes[i].especialidad === "Pediatra" && pacientes[i].edad < 10) {
+      pacientesPediatriaMenores10[index] = { ...pacientes[i] };
+      index++;
     }
   }
   return pacientesPediatriaMenores10;
 };
-
-const pacientesPediatriaMenores10 =
-  obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientesPediatria);
-console.log(pacientesPediatriaMenores10);
 
 // Apartado 2
 // Queremos activar el protocolo de urgencia si cualquier de los pacientes tiene un ritmo cardíaco superior a 100 pulsaciones por minuto y una temperatura corporal superior a 39 grados.
